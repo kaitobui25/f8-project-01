@@ -15,15 +15,11 @@
         <link rel="stylesheet" href="./assets/css/styles.css" />
     </head>
     <body>
-        <main>
+        <main></main>
             <!-- =============== Header ================= -->
 
-            <!-- dùng class header để phân biệt với các header khác có thể có sau này -->
-            <!-- mới đầu thì nghĩ chưa cần nhưng tới khi chèn ảnh hero-img thì mới cần canh bottom của ảnh = 0 so với bottom của header -->
-            <header class="header">
-                <!-- những nội dung trong header sẽ nằm trong class content -->
+            <div class="fixed-header">
                 <div class="content">
-                    <!-- thanh điều hướng dùng class navbar -->
                     <nav class="navbar">
                         <!-- Logo -->
                         <img src="./assets/img/logo.svg" alt="Besnik." />
@@ -41,10 +37,21 @@
                         <!-- những cái mà đi chung với nhau thì thường để chung trong 1 thẻ để dễ canh chỉnh vị trí
                             Ở đây là nút Sign in và Sign up -->
                         <div class="action">
-                            <a href="!#" class="action-link">Sign in</a>
-                            <a href="!#" class="btn action-btn">Sign up</a>
+                            <a href="#!" class="action-link">Sign in</a>
+                            <a href="#!" class="btn action-btn">Sign up</a>
                         </div>
                     </nav>
+                </div>
+            </div>
+            <!-- =============== Hero ================= -->
+
+            <!-- dùng class header để phân biệt với các header khác có thể có sau này -->
+            <!-- mới đầu thì nghĩ chưa cần nhưng tới khi chèn ảnh hero-img thì mới cần canh bottom của ảnh = 0 so với bottom của header -->
+            <header class="hero-father">
+                <!-- những nội dung trong header sẽ nằm trong class content -->
+                <div class="content">
+                    <!-- thanh điều hướng dùng class navbar -->
+
 
                     <div class="hero">
                         <div class="info">
@@ -57,7 +64,7 @@
                                 they hit the mass market! hot foreclosure deals
                                 with one simple search.
                             </p>
-                            <a href="!#" class="btn">More About Us</a>
+                            <a href="#!" class="btn">More About Us</a>
                         </div>
                         <!-- đặt thuộc tính alt là tiêu đề chính của trang web vì ảnh này đại diện cho phần hero cũng là đại diện cho trang web -->
                         <!-- sau này trình tìm kiếm gg sẽ hoạt động tốt hơn -->
@@ -88,23 +95,23 @@
                     </div>
 
                     <div class="image">
-                        <a href="!#"
+                        <a href="#!"
                             ><img src="./assets/img/logo(1).svg" alt=""
                         /></a>
 
-                        <a href="!#"
+                        <a href="#!"
                             ><img src="./assets/img/logo(2).svg" alt=""
                         /></a>
 
-                        <a href="!#"
+                        <a href="#!"
                             ><img src="./assets/img/logo(3).svg" alt=""
                         /></a>
 
-                        <a href="!#"
+                        <a href="#!"
                             ><img src="./assets/img/logo(4).svg" alt=""
                         /></a>
 
-                        <a href="!#"
+                        <a href="#!"
                             ><img src="./assets/img/logo(5).svg" alt=""
                         /></a>
                     </div>
@@ -131,7 +138,7 @@
                                 class="icon"
                             />
                             <h3 class="title">Buyer Guides</h3>
-                            <a href="!#" class="link">
+                            <a href="#!" class="link">
                                 <span>How to buy</span>
                                 <img
                                     src="./assets/img/vector.svg"
@@ -147,7 +154,7 @@
                                 class="icon"
                             />
                             <h3 class="title">Renter Guides</h3>
-                            <a href="!#" class="link">
+                            <a href="#!" class="link">
                                 <span>How to rent</span>
                                 <img
                                     src="./assets/img/vector.svg"
@@ -163,7 +170,7 @@
                                 class="icon"
                             />
                             <h3 class="title">Seller Guides</h3>
-                            <a href="!#" class="link">
+                            <a href="#!" class="link">
                                 <span>How to sell</span>
                                 <img
                                     src="./assets/img/vector.svg"
@@ -189,7 +196,7 @@
                             <p class="desc">
                                 Everything you need to know when you're looking
                             </p>
-                            <a href="!#" class="link">
+                            <a href="#!" class="link">
                                 <span>View All Properties</span>
                                 <img
                                     src="./assets/img/vector.svg"
@@ -201,7 +208,7 @@
                     <div class="list">
                         <!-- ==== Item 1 ==== -->
                         <div class="item">
-                            <a href="!#">
+                            <a href="#!">
                                 <img
                                     src="./assets/img/house-1.jpg"
                                     alt="Nikko Apartments"
@@ -210,7 +217,7 @@
                             </a>
                             <div class="house-des">
                                 <h3 class="title">
-                                    <a href="!#">Nikko Apartments</a>
+                                    <a href="#!">Nikko Apartments</a>
                                 </h3>
                                 <p class="desc">
                                     8502 Preston Rd. Inglewood, Maine 98280
@@ -239,7 +246,7 @@
                         </div>
                         <!-- ==== Item 2 ==== -->
                         <div class="item">
-                            <a href="!#">
+                            <a href="#!">
                                 <img
                                     src="./assets/img/house-2.jpg"
                                     alt="CouCou Homestead"
@@ -248,7 +255,7 @@
                             </a>
                             <div class="house-des">
                                 <h3 class="title line-clamp">
-                                    <a href="!#"> CouCou Homestead </a>
+                                    <a href="#!"> CouCou Homestead </a>
                                 </h3>
 
                                 <!-- class line-clamp để sau này có thay đổi nhiều chữ ở h3 thì nó tự động ngắt dòng 
@@ -283,7 +290,7 @@
                         </div>
                         <!-- ==== Item 3 ==== -->
                         <div class="item">
-                            <a href="!#">
+                            <a href="#!">
                                 <img
                                     src="./assets/img/house-3.jpg"
                                     alt="Lavis 18 Residence"
@@ -292,7 +299,7 @@
                             </a>
                             <div class="house-des">
                                 <h3 class="title">
-                                    <a href="!#">Lavis 18 Residence</a>
+                                    <a href="#!">Lavis 18 Residence</a>
                                 </h3>
                                 <p class="desc">
                                     8502 Preston Rd. Inglewood, Maine 98280
@@ -531,15 +538,15 @@
                             <p class="heading">Product</p>
                             <ul class="list">
                                 <li class="nav-item">
-                                    <a href="!#">Listing</a>
+                                    <a href="#!">Listing</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="!#">Property</a>
+                                    <a href="#!">Property</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="!#">Agents</a>
+                                    <a href="#!">Agents</a>
                                 </li>
-                                <li class="nav-item"><a href="!#">Blog</a></li>
+                                <li class="nav-item"><a href="#!">Blog</a></li>
                             </ul>
                         </div>
                         <!-- =============== Resources ================= -->
@@ -547,14 +554,14 @@
                             <p class="heading">Resources</p>
                             <ul class="list">
                                 <li class="nav-item">
-                                    <a href="!#">Our Homes</a>
+                                    <a href="#!">Our Homes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="!#">Member Stories</a>
+                                    <a href="#!">Member Stories</a>
                                 </li>
-                                <li class="nav-item"><a href="!#">Video</a></li>
+                                <li class="nav-item"><a href="#!">Video</a></li>
                                 <li class="nav-item">
-                                    <a href="!#">Free trial</a>
+                                    <a href="#!">Free trial</a>
                                 </li>
                             </ul>
                         </div>
@@ -563,16 +570,16 @@
                             <p class="heading">Company</p>
                             <ul class="list">
                                 <li class="nav-item">
-                                    <a href="!#">Patnerships</a>
+                                    <a href="#!">Patnerships</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="!#">Terms of use</a>
+                                    <a href="#!">Terms of use</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="!#">Privacy</a>
+                                    <a href="#!">Privacy</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="!#">Sitemap</a>
+                                    <a href="#!">Sitemap</a>
                                 </li>
                             </ul>
                         </div>
@@ -584,21 +591,21 @@
                                 prefer.
                             </p>
                             <div class="social">
-                                <a href="!#" class="social-link">
+                                <a href="#!" class="social-link">
                                     <img
                                         src="./assets/img/facebook.svg"
                                         alt="facebook"
                                         class="social-icon"
                                     />
                                 </a>
-                                <a href="!#" class="social-link">
+                                <a href="#!" class="social-link">
                                     <img
                                         src="./assets/img/twitter.svg"
                                         alt="twitter"
                                         class="social-icon"
                                     />
                                 </a>
-                                <a href="!#" class="social-link">
+                                <a href="#!" class="social-link">
                                     <img
                                         src="./assets/img/linkedin.svg"
                                         alt="linkedin"

@@ -76,9 +76,21 @@ a {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-/* ==============================  Header ==============================  */
 
-.header {
+
+/* ==============================  Header ==============================  */
+.fixed-header {
+    position: sticky;
+    background-color: #e6f0ff;
+    z-index: 2;
+    top: 0;
+    padding-bottom: 20px;
+}
+
+
+/* ==============================  Hero ==============================  */
+
+.hero-father {
     position: relative;
 
     /* nhận thấy trang landing này có phần header chiếm hết tầm nhìn khi người dùng click vào trang nên dùng 100vh */
@@ -138,7 +150,7 @@ a {
 }
 
 .hero {
-    margin-top: 130px;
+    padding-top: 110px;
 }
 
 .hero .info {
@@ -163,7 +175,7 @@ a {
     line-height: 1.18; /* 118.75% */
 }
 
-.header .info .desc {
+.hero-father .info .desc {
     display: block;
 
     margin-top: 30px;
@@ -232,6 +244,8 @@ a {
     display: flex;
     align-items: center;
     height: 91px;
+
+    /* không dùng padding trên dưới vì có chiều cao các logo khác nhau. có padding trên dưới đi nữa thì độ cao cũng không đồng đều giữa các logo. nên phải dùng height 91px */
     padding: 0px 40px;
 }
 
