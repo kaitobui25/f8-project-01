@@ -1,0 +1,793 @@
+* {
+    box-sizing: border-box;
+}
+/* :root  tương đương với html{} mà do html{} có chứ font size rồi nên dùng root để lưu biến toàn cục */
+:root {
+    --primary-color: #0f1b4c;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: Poppins, sans-serif;
+}
+
+/* những thành phần dùng chung thì viết trong common */
+
+/* ==============================  COMMON ============================== */
+.content {
+    /* đo chiều rộng header ở figma */
+    /* Cũng là độ rộng của các phần content khác phía dưới. */
+    width: 1110px;
+
+    /* max-width: 100%; khi width < 1110px thì tự động các thành phần content co lại */
+    /* -48px là để khi bị co lại thì sign up và logo không bị sát mép mà cách mép 1 đoạn 24px */
+    max-width: calc(100% - 48px);
+
+    /* canh giữa */
+    /* không nên viết margin: auto vì phần content là dùng chung. sau này có thể dùng margin top bottom thì thuộc tính sẽ bị ghi đè. không nên.
+    hạn chế đưa những cái riêng biệt vào. chỉ đưa cái chung chung vào  */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* nút nhấn trên trang có 4 nơi nên viết css chung */
+.btn {
+    /* thẻ a sẽ ko ăn thuộc tính height width nên cần chuyển sang inline block */
+    display: inline-block;
+
+    /* kich thước bên figma là 98px. nhưng nếu muốn độ rộng tự động thay đổi khi chữ bên trong dài ngắn thay dổi thỉ để min-width */
+    min-width: 98px;
+
+    /* chiều cao của 3 nút dưới là 50px. chiều cao của nút Sign up là 40px. Vậy ta viết cho chiều cao tất cả các nút bằng 50 . Sau đó riêng nút Sign up ta sẽ viết riêng sau ở bên dưới */
+    /* padding trên dưới 18px : cỡ chữ 14px mà tổng chiều cao là 50px (figma ghi vậy). (50 - 14) / 2 = 18px  */
+    /* padding trái phải 16px : chữ dài ra thì nó tự động cách lề của nút nhấn 1 khoảng 16px */
+    padding: 18px 16px;
+
+    /* copy from sigma */
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* giới hạn số dòng văn bản hiển thị , và cắt bỏ phần văn bản thừa */
+.line-clamp {
+    /* thiết lập phần tử hiển thị dưới dạng một hộp linh hoạt (flexbox) trên các trình duyệt hỗ trợ WebKit */
+    display: -webkit-box;
+    /* Thuộc tính này giới hạn số dòng văn bản được hiển thị. */
+    /* nếu không có khai báo biến --line-camp thì mặc định giá trị là 2 */
+    -webkit-line-clamp: var(--line-clamp,2);
+    /* Thuộc tính này xác định cách sắp xếp hộp theo hướng nào. Ở đây, vertical có nghĩa là các hộp con sẽ được sắp xếp theo chiều dọc (vertical) */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+/* ==============================  Header ==============================  */
+
+.header {
+    position: relative;
+
+    /* nhận thấy trang landing này có phần header chiếm hết tầm nhìn khi người dùng click vào trang nên dùng 100vh */
+    height: 100vh;
+    background-color: #e6f0ff;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+
+    /* navbar cách phần đầu trang 1 khoảng  */
+    /* để xác định khoảng này thì xem trong figma cái nào có chiều cao cao nhất và gióng lên trên xem khoảng cách bao nhiêu */
+    /* ta thấy nút sigup có độ cao gần với top nhất và nó cách 1 khoảng 38px */
+    padding-top: 38px;
+}
+
+.navbar ul {
+    display: flex;
+    margin-left: 50px;
+}
+
+.navbar ul a {
+    /* 16px : trong figma thì các nav cách nhau 32px nên padding left right 16px là ok */
+    /* 8px : tăng độ rộng trên dưới thêm 8px khi bấm vào nút , để bấm dễ ăn hơn, nâng cao trải nghiệm người dùng. */
+    padding: 8px 16px;
+
+    /* copy 3 thuộc tính này bên figma  */
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #4f5361;
+
+    /* line-height từ 2 hàng trở lên thì dùng. ko thì thôi . bỏ cũng được */
+    /* line-height: normal; */
+}
+
+.navbar ul a:hover {
+    text-decoration: underline;
+}
+
+.navbar .action {
+    margin-left: auto;
+}
+
+.action .action-link {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-right: 18px;
+}
+
+.action .action-btn {
+    /* các btn khác có height: 50 thì suy ra padding top bottom = 18 là ok */
+    /* Riêng nut sign up có height = 40 . nên mỗi phần top botttom phải bớt đi 5px nên = 13px là ok */
+    padding: 13px 16px;
+    border-radius: 8px;
+}
+
+.hero {
+    margin-top: 130px;
+}
+
+.hero .info {
+    /* figma hiển thị khối info có width là 559px. Nhưng thường là khối nhỏ năm trong khối lớn sẽ lấy tỉ lệ theo khối lớn */
+    /* khối lớn có width = 1110px => khối info có width = 559 / 1110  ~ 50.3% */
+    width: 50.3%;
+}
+
+.info .sub-title {
+    color: #687690;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 0.018rem;
+}
+
+.info .title {
+    margin-top: 8px;
+
+    color: #000336;
+    font-size: 6.1rem;
+    font-weight: 700;
+    line-height: 1.18; /* 118.75% */
+}
+
+.header .info .desc {
+    display: block;
+
+    margin-top: 30px;
+    color: #5a6473;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 3.2rem; /* 177.778% */
+}
+
+.info .btn {
+    /* độ dài chữ bay giờ chỉ có "More about us" nhưng sau này người ta ghi dài hơn nữa thì nó sẽ tự động dài ra nên đê min-width */
+    min-width: 170px;
+    margin-top: 40px;
+    font-size: 1.3rem;
+}
+
+.hero-img {
+    position: absolute;
+    bottom: 0;
+
+    /* trên figma đo thì thấy từ cạnh phải đến bức hình là 65px thì có thể viết right: 65px . nhưng sẽ bị lệch khi độ rộng màn hình thay đổi */
+    /* nên ta không so sánh nó với 1 đơn vị có thể thay đổi như là view port */
+    /* nên so sánh nó với thứ cố định như là chiều rộng của content 1110px */
+    /* độ rộng màn hình trừ độ rộng content được độ rộng dư ra của tổng 2 bên. chia 2 để ra độ rộng của 1 bên . bây giờ hình sẽ bằng mép phải của sign up */
+    /* sign up cách mép phải 165px. hình cách mép phải 65px. suy ra phải đẩy hình thêm 100px nữa */
+
+    right: calc(((100vw - 1110px) / 2) - 100px);
+}
+
+/* ============================== Clients ============================== */
+
+.clients {
+    margin-top: 79px;
+    padding: 43px 0 64px;
+}
+
+.clients .content .row {
+    display: flex;
+
+    /* thay vì cần margin left auto cho các phần tử con. nhưng ta thấy dòng ở dưới cũng cần đẩy sang 2 bên. 
+    nên nếu dùng auto sẽ phải lập lại cho các phần tử con tiếp theo. nên ta dùng space between cho phần tử cha. là các phần tử con tự động đẩy sang 2 bên. */
+    justify-content: space-between;
+}
+
+.clients .row-desc {
+    margin-top: 23px;
+}
+
+.clients .desc {
+    color: #7d8589;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+}
+
+.clients .image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clients .image {
+    margin-top: 96.5px;
+}
+/* ============================== Guides ============================== */
+.guides {
+    margin-top: 40px;
+    padding: 79px 0 79px;
+    text-align: center;
+}
+
+.guides .sub-title {
+    position: relative;
+    color: #000339;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1; /* 100% */
+}
+
+.guides .sub-title .line {
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 20.5px);
+    width: 41px;
+    height: 4px;
+    border-radius: 12px;
+    background: #000339;
+}
+
+.guides .desc {
+    width: 459px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #5a6473;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.875; /* 187.5% */
+}
+
+/* ============================== Guides ============================== */
+.list-guides {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    width: 685px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* sensei 
+.list-guide {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+*/
+
+.guide-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* .guide-item {
+    margin: 0 70px;
+    text-align: center;
+} */
+
+.guide-item h3 {
+    margin-top: 26px;
+    color: #3b3c45;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.1; /* 110% */
+}
+/* .guide-item .title {
+    margin-top: 26px;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.1;
+    color: #3b3c45;
+} */
+
+.guide-item .link {
+    /* vì thẻ ca có display block nên thẻ con là thẻ link bị chueyen thành display bock nên mới margin được */
+    margin-top: 10px;
+    color: #0689ff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+/* .guide-item .link {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #0689ff;
+}
+ */
+
+.guide-item .arrow {
+    margin-left: 6px;
+}
+
+.guide-btn {
+    /* guides có text align center nên btn tự động vào giữa */
+    margin-top: 50px;
+}
+/* .guide-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+ */
+
+.guide-btn .btn {
+    min-width: 170px;
+}
+
+/* ==============================  Feature1 ==============================  */
+
+.feature {
+  
+    margin-top: 41px;
+    padding: 110px 0px 110px;
+    /* min-width: 1440px; */
+    height: 727px;
+}
+
+/* .feature .content {
+    position: absolute;
+} */
+
+.feature header .title {
+    /* không dùng margin được vì sẽ gặp hiện tượng chồng lấp của css nen phải dùng padding*/
+    /* margin-top: 70px; */
+    color: #000339;
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.feature .row {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feature .row .desc {
+    color: #5a6473;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.875;
+}
+
+.feature .row .link {
+    /* display: flex; */
+    /* Mặc định của flex container:
+Khi một phần tử được set display: flex, nó trở thành một flex container. Mặc định, flex container có align-items: stretch. khiến các phần tử con bị kéo dãn theo chiều cross 
+Khi bạn set align-items: center, 
+Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặt ở giữa container theo chiều dọc.*/
+    /* align-items: center; */
+    color: #0689ff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: normal; 
+}
+
+.feature .link img {
+    margin-left: 8px;
+}
+
+/* ==============================  Feature2 ==============================  */
+
+.feature .list {
+    margin-top: 68px;
+    display: flex;
+    margin-right: -30px;
+}
+
+.feature .list .item {
+    /* tỉ lệ chiều rộng các khung hình bằng nhau, tổng kích thước thẻ list chia đều cho 3 thẻ con item
+    không có flex 1 thì ảnh to sẽ chiếm không gian to, ảnh nhỏ chiếm nhở */
+    flex: 1;
+    margin-right: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.feature .list .house {
+    /* đặt width: 100% là vì phần tử chứa hình ảnh có chiều rộng bị giới hạn. Nếu container có chiều rộng nhỏ, thì bức ảnh cũng sẽ bị co lại để phù hợp với chiều rộng của container đó. */
+    width: 100%;
+    height: 227px;
+    /* tự động cắt xén bức ảnh để vừa chiều rộng chiều cao */
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.house-des {
+    margin-top: 17px;
+    margin-left: 20px;
+    margin-right: 38px;
+}
+
+.house-des .title a{
+    color: #000339;
+    font-size: 2rem;
+    font-weight: 600;
+    /* sau này chữ tăng lên xuống dòng nên đặt 1.5 cho hợp lý */
+    line-height: 1.5; 
+}
+
+.house-des .desc {
+    margin-top: 11px;
+    color: #A3A6AB;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: normal;
+    /* nếu người dùng nhập link vào đây sẽ bị vỡ giao diện nên dung word break để ngắt dòng */
+    word-break: break-all;
+    
+}
+
+.house-des .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 23px;
+    margin-bottom: 24px;
+}
+
+.house-des .label {
+    color: #4D4D52;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1; /* 100% */
+    letter-spacing: 0.14px;
+}
+
+/* ==============================  Stats 1.1 ==============================  */
+
+.stats {
+    position: relative;
+    height: 734px;
+    margin: 96px 0px 120px;
+    
+}
+
+.stats .row:first-child {
+    position: relative;
+}
+
+.stats .img-block {
+}
+
+.img-block .main-img {
+    position: absolute;
+    left: 131px;
+    top: 0;
+    max-width: 437px;
+    height: 492px;
+    object-fit: over;
+    border-radius: 35px;
+}
+
+.stats .info {
+    position: absolute;
+    top: 70px;
+    left: 756px;
+}
+
+.stats .info .line {
+    width: 44.749px;
+    height: 4.286px;
+    border-radius: 12px;
+    background: #000339;
+
+}
+
+.stats .info .sub-title {
+    position: relative;
+    margin-top: 10.72px;
+    width: 293.6px;
+    color: #000339;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.2857; /* 128.571% */
+}
+
+.stats .info .sub-title::before {
+    position: absolute;
+    top: -10.72px;
+    content: "";
+    width: 44.749px;
+    height: 4.286px;
+    border-radius: 12px;
+    background: #000339;
+}
+
+.stats .info .desc{
+    margin-top:  21.43px;
+    width: 337px;
+    color: #5A6473;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.875; /* 187.5% */
+}
+
+/* ==============================  Stats 1.2 ==============================  */
+
+.stats-cus {
+    position: absolute;
+    z-index: 1;
+    width: 260.8px;
+    height: 270px;
+    padding: 48.22px 25.1px 43.39px 24.1px;
+    background-color: #fff;
+    border-radius: 0px 0px 12px 12px;
+    box-shadow: 90px 85px 100px 0px rgba(0, 0, 0, 0.06);
+
+}
+
+.stats-cus .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stats-cus .total-cus span:first-child{
+    color: #000339;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.01;
+}
+
+.stats-cus .total-cus span:last-child{
+    color: #000339;
+    font-size: 2.6rem;
+    font-weight: 500;
+    letter-spacing: 0.01;
+}
+
+.stats-cus .des {
+    margin-top: 8.57px;
+    color: #A7A7A7;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5; /* 150% */
+}
+
+.stats-cus .separate{
+
+    margin-top: 27.33px;
+    width: 211.326px;
+    height: 1.286px;
+    background: #E9E9E9;
+}
+
+.stats-cus .avatar-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15.19px 17.51px;
+    margin-top: 27.64px;
+}
+
+.stats-cus .avatar-group {
+    display: flex;
+    margin-left: 3.3px;
+}
+
+.stats-cus .avatar {
+    margin-left: -3.3px;
+    width: 17.83px;
+    height: 17.505px;
+    
+    border-radius: 50%;
+    background: lightgray 50% / cover no-repeat;
+    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.10);
+
+    /* AVATAR TEXT */
+    
+    background-color: var(--bg-color, #fff);
+    color: #FFF;
+    text-align: center;
+    font-family: "Circular Std";
+    font-size: 0.72rem;
+    font-weight: 450;
+    line-height: 17.5px;
+
+}
+
+.stats-cus .avatar-1 {
+}
+
+/* ==============================  Stats 2 ==============================  */
+
+.row-number {
+    display: flex;
+    position: absolute;
+    width: 1110px;
+    margin-top: 610.8px;
+    padding: 0 10px 0 36px;
+    justify-content: space-between;
+
+}
+
+.row-number .number {
+    color: #000;
+    font-size: 6.4rem;
+    font-weight: 600;
+    line-height: 1; /* 100% */
+}
+
+.row-number .desc {
+    margin-top: 25.72px;
+    color: #7B8087;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+/* ==============================  Subscribe ==============================  */
+.subt {
+    margin-top: 39px;
+}
+
+
+
+.subt .body {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 370px;
+    background-color: #063183;
+    border-radius: 20px;
+}
+
+.subt .info {
+    padding: 0px 80px;
+    width: 671px;
+}
+
+.subt .sub-title {
+    color: #FFF;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.6; /* 100% */
+}
+
+.subt .desc {
+    margin-top: 15px;
+    color: #FFF;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1; /* 187.5% */
+}
+
+.subt .btn {
+    margin-top: 20px;
+    min-width: 151px;
+    padding: 14px 0px 16px;
+    background-color: #fff;
+
+    color: #002366;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.subt .body  .image {
+    position: absolute;
+    right: 221px;
+    bottom: 0;
+}
+
+/* ==============================  Footer 1 ==============================  */
+
+.footer {
+    margin-top: 55px;
+    padding-top: 50px;
+    padding-bottom: 58px;
+}
+
+.footer .body {
+    display: flex;
+    gap: 185px;
+    /* justify-content: space-between; */
+}
+
+.footer .heading {
+    color: #1C1C1D;
+    font-family: Lato, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.footer .list {
+    white-space: nowrap;
+    margin-top: 42px;
+}
+
+.footer .nav-item {   
+    margin-top: 18px;
+    color: #7A7A7E;
+    font-family: Poppins;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: normal;
+    }
+
+.footer .body .nav:last-child {
+    width: 257px;
+    max-width: 100%;
+    /* background-color: orange; */
+}
+
+.footer .nav .desc {
+    margin-top: 40px;
+    color: #7A7A7E;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.8rem; /* 175% */
+}
+
+.footer .social {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    width: 117px;
+    height: 28px;
+}
+
+.footer .social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9F9F9;
+    width: 28px;
+}
+
+.footer .social-link:hover {
+    opacity: 0.8;
+}
+
+/* ==============================  Footer 2 ==============================  */
+
+.footer-ending {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 83px;
+}
+
+.footer-ending .copy-right {
+    color: #C2C2C2;
+    font-family: Poppins;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: normal;
+}
