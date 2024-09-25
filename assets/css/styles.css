@@ -6,6 +6,11 @@
     --primary-color: #0f1b4c;
 }
 
+html,
+body {
+    scroll-behavior: smooth;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -71,12 +76,11 @@ a {
     display: -webkit-box;
     /* Thuộc tính này giới hạn số dòng văn bản được hiển thị. */
     /* nếu không có khai báo biến --line-camp thì mặc định giá trị là 2 */
-    -webkit-line-clamp: var(--line-clamp,2);
+    -webkit-line-clamp: var(--line-clamp, 2);
     /* Thuộc tính này xác định cách sắp xếp hộp theo hướng nào. Ở đây, vertical có nghĩa là các hộp con sẽ được sắp xếp theo chiều dọc (vertical) */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
 
 /* ==============================  Header ==============================  */
 .fixed-header {
@@ -87,14 +91,14 @@ a {
     padding-bottom: 20px;
 }
 
-
 /* ==============================  Hero ==============================  */
 
 .hero-father {
     position: relative;
 
     /* nhận thấy trang landing này có phần header chiếm hết tầm nhìn khi người dùng click vào trang nên dùng 100vh */
-    height: 100vh;
+    /* thanh navigator nằm ngang chiếm 98px chiều dọc nên phải trừ nó đi */
+    height: calc(100vh - 98px);
     background-color: #e6f0ff;
 }
 
@@ -237,10 +241,9 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-top: 70px;
-
 }
 
-.clients .image a{
+.clients .image a {
     display: flex;
     align-items: center;
     height: 91px;
@@ -251,13 +254,12 @@ a {
 
 .clients .image a:hover {
     border-radius: 15px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.10);
-    
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 /* ============================== Guides ============================== */
 .guides {
-    margin-top: 40px;
-    padding: 79px 0 79px;
+    margin-top: 20px;
+    padding: 100px 0 79px;
     text-align: center;
 }
 
@@ -374,11 +376,11 @@ a {
 /* ==============================  Feature1 ==============================  */
 
 .feature {
-  
     margin-top: 41px;
     padding: 110px 0px 110px;
     /* min-width: 1440px; */
     height: 727px;
+    background: #f5fafe;
 }
 
 /* .feature .content {
@@ -416,7 +418,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     color: #0689ff;
     font-size: 1.8rem;
     font-weight: 600;
-    line-height: normal; 
+    line-height: normal;
 }
 
 .feature .link img {
@@ -456,23 +458,22 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     margin-right: 38px;
 }
 
-.house-des .title a{
+.house-des .title a {
     color: #000339;
     font-size: 2rem;
     font-weight: 600;
     /* sau này chữ tăng lên xuống dòng nên đặt 1.5 cho hợp lý */
-    line-height: 1.5; 
+    line-height: 1.5;
 }
 
 .house-des .desc {
     margin-top: 11px;
-    color: #A3A6AB;
+    color: #a3a6ab;
     font-size: 1.4rem;
     font-weight: 500;
     line-height: normal;
     /* nếu người dùng nhập link vào đây sẽ bị vỡ giao diện nên dung word break để ngắt dòng */
     word-break: break-all;
-    
 }
 
 .house-des .info {
@@ -484,7 +485,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 }
 
 .house-des .label {
-    color: #4D4D52;
+    color: #4d4d52;
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 1; /* 100% */
@@ -495,9 +496,9 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 
 .stats {
     position: relative;
-    height: 734px;
-    margin: 96px 0px 120px;
-    
+    height: 824px;
+    /* margin-bottom: 120px; */
+    padding-top: 96px;
 }
 
 .stats .row:first-child {
@@ -528,7 +529,6 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     height: 4.286px;
     border-radius: 12px;
     background: #000339;
-
 }
 
 .stats .info .sub-title {
@@ -551,10 +551,10 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     background: #000339;
 }
 
-.stats .info .desc{
-    margin-top:  21.43px;
+.stats .info .desc {
+    margin-top: 21.43px;
     width: 337px;
-    color: #5A6473;
+    color: #5a6473;
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
@@ -572,7 +572,6 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     background-color: #fff;
     border-radius: 0px 0px 12px 12px;
     box-shadow: 90px 85px 100px 0px rgba(0, 0, 0, 0.06);
-
 }
 
 .stats-cus .row {
@@ -581,14 +580,14 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     align-items: center;
 }
 
-.stats-cus .total-cus span:first-child{
+.stats-cus .total-cus span:first-child {
     color: #000339;
     font-size: 2.6rem;
     font-weight: 700;
     letter-spacing: 0.01;
 }
 
-.stats-cus .total-cus span:last-child{
+.stats-cus .total-cus span:last-child {
     color: #000339;
     font-size: 2.6rem;
     font-weight: 500;
@@ -597,18 +596,17 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 
 .stats-cus .des {
     margin-top: 8.57px;
-    color: #A7A7A7;
+    color: #a7a7a7;
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5; /* 150% */
 }
 
-.stats-cus .separate{
-
+.stats-cus .separate {
     margin-top: 27.33px;
     width: 211.326px;
     height: 1.286px;
-    background: #E9E9E9;
+    background: #e9e9e9;
 }
 
 .stats-cus .avatar-block {
@@ -627,21 +625,20 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     margin-left: -3.3px;
     width: 17.83px;
     height: 17.505px;
-    
+
     border-radius: 50%;
     background: lightgray 50% / cover no-repeat;
-    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.1);
 
     /* AVATAR TEXT */
-    
+
     background-color: var(--bg-color, #fff);
-    color: #FFF;
+    color: #fff;
     text-align: center;
     font-family: "Circular Std";
     font-size: 0.72rem;
     font-weight: 450;
     line-height: 17.5px;
-
 }
 
 .stats-cus .avatar-1 {
@@ -656,7 +653,6 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     margin-top: 610.8px;
     padding: 0 10px 0 36px;
     justify-content: space-between;
-
 }
 
 .row-number .number {
@@ -668,19 +664,16 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 
 .row-number .desc {
     margin-top: 25.72px;
-    color: #7B8087;
+    color: #7b8087;
     font-size: 1.8rem;
     font-weight: 500;
     line-height: normal;
-
 }
 
 /* ==============================  Subscribe ==============================  */
 .subt {
-    margin-top: 39px;
+    padding-top: 159px;
 }
-
-
 
 .subt .body {
     display: flex;
@@ -697,7 +690,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 }
 
 .subt .sub-title {
-    color: #FFF;
+    color: #fff;
     font-size: 3.5rem;
     font-weight: 600;
     line-height: 1.6; /* 100% */
@@ -705,7 +698,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 
 .subt .desc {
     margin-top: 15px;
-    color: #FFF;
+    color: #fff;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1; /* 187.5% */
@@ -724,7 +717,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     line-height: normal;
 }
 
-.subt .body  .image {
+.subt .body .image {
     position: absolute;
     right: 221px;
     bottom: 0;
@@ -745,7 +738,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 }
 
 .footer .heading {
-    color: #1C1C1D;
+    color: #1c1c1d;
     font-family: Lato, sans-serif;
     font-size: 2rem;
     font-weight: 700;
@@ -757,14 +750,14 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     margin-top: 42px;
 }
 
-.footer .nav-item {   
+.footer .nav-item {
     margin-top: 18px;
-    color: #7A7A7E;
+    color: #7a7a7e;
     font-family: Poppins;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: normal;
-    }
+}
 
 .footer .body .nav:last-child {
     width: 257px;
@@ -774,7 +767,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 
 .footer .nav .desc {
     margin-top: 40px;
-    color: #7A7A7E;
+    color: #7a7a7e;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2.8rem; /* 175% */
@@ -792,7 +785,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
     width: 28px;
 }
 
@@ -810,7 +803,7 @@ Mỗi item giữ nguyên kích thước tự nhiên của nó và được đặ
 }
 
 .footer-ending .copy-right {
-    color: #C2C2C2;
+    color: #c2c2c2;
     font-family: Poppins;
     font-size: 1.4rem;
     font-weight: 400;
