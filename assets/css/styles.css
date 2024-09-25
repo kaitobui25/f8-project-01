@@ -95,6 +95,8 @@ a {
 
 .hero-father {
     position: relative;
+    display: flex;
+    align-items: center;
 
     /* nhận thấy trang landing này có phần header chiếm hết tầm nhìn khi người dùng click vào trang nên dùng 100vh */
     /* thanh navigator nằm ngang chiếm 98px chiều dọc nên phải trừ nó đi */
@@ -153,9 +155,6 @@ a {
     border-radius: 8px;
 }
 
-.hero {
-    padding-top: 110px;
-}
 
 .hero .info {
     /* figma hiển thị khối info có width là 559px. Nhưng thường là khối nhỏ năm trong khối lớn sẽ lấy tỉ lệ theo khối lớn */
